@@ -1,0 +1,76 @@
+1) What commands do you use in your daily routine?
+pwd
+ls 
+cat 
+head
+tail
+more 
+less
+grep 
+chmod
+cp
+mv
+
+2) How do you show hidden files?
+I use ls -a to display all files, including hidden files. 
+
+For a detailed listing, 
+I use ls -la
+
+3) In Linux, hidden file names start with a dot, such as .bashrc.”
+
+3) grep.
+“I use grep to search for word or  pattern inside a file. 
+For example, grep 'ERROR' application.log displays lines containing ERROR. 
+
+I use -i to ignore case, 
+-n to display line numbers, and 
+-v to display lines that do not match
+
+4) How many ways can you view a file?
+“I commonly use six commands: cat to display the complete file, more to read page by page, less to scroll forward and backward, head to view the first lines, tail to view the last lines, and vi to open the file in an editor. For live log monitoring, I use tail -f application.log. By default, head and tail display ten lines.”
+
+5) Explain chmod.
+“I use chmod to change file or directory permissions for the owner, group, and others.
+
+ Read has a value of 4, write is 2, and execute is 1. For example, chmod 750 script.sh gives the owner read, write, and execute permissions, the group read and execute permissions, and others no permissions. I can also use chmod u+x script.sh to add execute permission for the owner.”
+
+Explain hostname, id, who, and whoami.
+“I use hostname to identify the server’s hostname. id displays my user ID, primary group ID, and group memberships. who displays currently logged-in user sessions, and whoami displays the username under which my current commands run.”
+
+How do you rename a file?
+“I use the mv command. For example, mv old_report.txt new_report.txt renames the file within the same directory. I use mv -i when I want a confirmation before overwriting an existing destination file.”
+
+How do you create a nested directory?
+“I use mkdir -p to create nested directories, including any missing parent directories. For example, mkdir -p /tmp/bank/logs/archive creates the complete directory path. It does not report an error if those directories already exist.”
+-----------------------------
+wc - it word count command
+it will show the number of lines and words and charecter in a file
+
+
+
+customer.dat
+wc -l customer.dat
+
+
+------------>
+error.log
+timeout word
+timeout ajdsgasj hagfdhasf
+nsdns timeout sajdg timeout havashvdc TIMEOUT
+
+grep -io 'timeout' error.log
+
+grep -io 'timeout' error.log|wc -w
+--------------------------------------
+
+
+/opt/data/daily
+
+       /cutomer_03102926.dat
+       cutomer_04102926.dat
+       cutomer_05102926.dat
+       
+/monthly
+/yearly
+

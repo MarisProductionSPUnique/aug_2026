@@ -1,0 +1,66 @@
+2026-10-05 08:30:01,214 INFO  [main] org.apache.catalina.startup.Catalina - Server startup in [18452] milliseconds
+2026-10-05 08:30:02,031 INFO  [main] com.example.bank.config.AppInitializer - Application context initialized successfully
+2026-10-05 08:30:02,355 INFO  [main] com.example.bank.config.DataSourceConfig - HikariPool-1 - Start completed. Pool size: 20
+2026-10-05 08:30:03,102 INFO  [main] com.example.bank.scheduler.BatchScheduler - EOD batch job scheduled at 23:30:00
+2026-10-05 08:41:17,540 INFO  [http-nio-8080-exec-1] com.example.bank.controller.AuthController - Login request received from IP 10.20.30.41
+2026-10-05 08:41:17,688 INFO  [http-nio-8080-exec-1] com.example.bank.service.AuthService - User login successful: userId=U20451
+2026-10-05 08:42:05,102 INFO  [http-nio-8080-exec-2] com.example.bank.controller.CustomerController - GET /api/customers/C1001
+2026-10-05 08:42:05,177 DEBUG [http-nio-8080-exec-2] com.example.bank.dao.CustomerDao - Executing query: SELECT * FROM CUSTOMER WHERE CUSTOMER_ID = ?
+2026-10-05 08:42:05,201 INFO  [http-nio-8080-exec-2] com.example.bank.service.CustomerService - Customer fetched: customerId=C1001, status=ACTIVE
+2026-10-05 08:45:33,870 INFO  [http-nio-8080-exec-3] com.example.bank.controller.CustomerController - GET /api/customers/C1002
+2026-10-05 08:45:33,925 INFO  [http-nio-8080-exec-3] com.example.bank.service.CustomerService - Customer fetched: customerId=C1002, status=ACTIVE
+2026-10-05 08:52:10,411 WARN  [http-nio-8080-exec-4] com.example.bank.service.AuthService - Invalid password attempt for userId=U20388, attempt=2
+2026-10-05 08:52:44,019 WARN  [http-nio-8080-exec-4] com.example.bank.service.AuthService - Invalid password attempt for userId=U20388, attempt=3
+2026-10-05 08:52:44,025 WARN  [http-nio-8080-exec-4] com.example.bank.service.AuthService - Account locked for userId=U20388 after 3 failed attempts
+2026-10-05 09:05:12,333 INFO  [http-nio-8080-exec-5] com.example.bank.controller.TransactionController - POST /api/transactions/transfer
+2026-10-05 09:05:12,390 INFO  [http-nio-8080-exec-5] com.example.bank.service.TransactionService - Transfer initiated: from=C1001, to=C1004, amount=5000.00
+2026-10-05 09:05:12,512 INFO  [http-nio-8080-exec-5] com.example.bank.service.TransactionService - Transfer completed: txnId=TXN88120345, status=SUCCESS
+2026-10-05 09:14:56,780 WARN  [http-nio-8080-exec-6] com.example.bank.service.CustomerService - Customer C1007 is DORMANT, transaction blocked
+2026-10-05 09:14:56,785 ERROR [http-nio-8080-exec-6] com.example.bank.controller.TransactionController - Transaction failed: Account inactive for customerId=C1007
+2026-10-05 09:30:21,004 INFO  [http-nio-8080-exec-7] com.example.bank.controller.CustomerController - GET /api/customers/C1099
+2026-10-05 09:30:21,061 WARN  [http-nio-8080-exec-7] com.example.bank.service.CustomerService - Customer not found: customerId=C1099
+2026-10-05 09:30:21,063 ERROR [http-nio-8080-exec-7] com.example.bank.controller.CustomerController - Customer lookup failed: HTTP 404
+2026-10-05 10:02:47,615 INFO  [http-nio-8080-exec-8] com.example.bank.controller.TransactionController - POST /api/transactions/transfer
+2026-10-05 10:02:47,672 INFO  [http-nio-8080-exec-8] com.example.bank.service.TransactionService - Transfer initiated: from=C1006, to=C1013, amount=250000.00
+2026-10-05 10:02:47,740 WARN  [http-nio-8080-exec-8] com.example.bank.service.FraudCheckService - High value transaction flagged for review: txnId=TXN88120361, amount=250000.00
+2026-10-05 10:02:47,812 INFO  [http-nio-8080-exec-8] com.example.bank.service.TransactionService - Transfer status: PENDING_APPROVAL
+2026-10-05 10:25:09,238 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m2s)
+2026-10-05 10:48:33,501 ERROR [http-nio-8080-exec-9] com.example.bank.dao.TransactionDao - Database error while saving transaction
+java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:197)
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:162)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:128)
+	at com.example.bank.dao.TransactionDao.save(TransactionDao.java:74)
+	at com.example.bank.service.TransactionService.processTransfer(TransactionService.java:112)
+	at com.example.bank.controller.TransactionController.transfer(TransactionController.java:58)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2026-10-05 10:48:33,512 ERROR [http-nio-8080-exec-9] com.example.bank.controller.TransactionController - Transfer failed: HTTP 500 Internal Server Error
+2026-10-05 10:49:02,877 WARN  [http-nio-8080-exec-10] com.example.bank.dao.TransactionDao - Retrying database operation, attempt=1
+2026-10-05 10:49:03,945 INFO  [http-nio-8080-exec-10] com.example.bank.dao.TransactionDao - Database connection restored, transaction saved: txnId=TXN88120377
+2026-10-05 11:15:40,129 INFO  [http-nio-8080-exec-11] com.example.bank.controller.CustomerController - POST /api/customers
+2026-10-05 11:15:40,203 INFO  [http-nio-8080-exec-11] com.example.bank.service.CustomerService - New customer created: customerId=C1021, accountType=SAVINGS
+2026-10-05 11:32:18,664 ERROR [http-nio-8080-exec-12] com.example.bank.service.NotificationService - Failed to send email to customer C1004
+javax.mail.MessagingException: Could not connect to SMTP host: smtp.example.com, port: 587
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2209)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:722)
+	at com.example.bank.service.NotificationService.sendEmail(NotificationService.java:48)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2026-10-05 11:32:18,671 WARN  [http-nio-8080-exec-12] com.example.bank.service.NotificationService - Email queued for retry: customerId=C1004
+2026-10-05 12:00:00,003 INFO  [scheduling-1] com.example.bank.scheduler.BatchScheduler - Hourly health check started
+2026-10-05 12:00:00,118 INFO  [scheduling-1] com.example.bank.scheduler.BatchScheduler - Active DB connections: 6, Idle: 14, Waiting: 0
+2026-10-05 12:00:00,121 INFO  [scheduling-1] com.example.bank.scheduler.BatchScheduler - Heap usage: 612MB / 1024MB
+2026-10-05 13:22:51,447 WARN  [http-nio-8080-exec-14] com.example.bank.controller.CustomerController - Slow request detected: GET /api/customers/search took 4823ms
+2026-10-05 14:10:05,992 ERROR [http-nio-8080-exec-15] com.example.bank.service.CustomerService - Unexpected error while updating customer C1015
+java.lang.NullPointerException: Cannot invoke "String.trim()" because "email" is null
+	at com.example.bank.service.CustomerService.validateEmail(CustomerService.java:136)
+	at com.example.bank.service.CustomerService.updateCustomer(CustomerService.java:92)
+	at com.example.bank.controller.CustomerController.update(CustomerController.java:71)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2026-10-05 14:10:05,998 ERROR [http-nio-8080-exec-15] com.example.bank.controller.CustomerController - Update failed: HTTP 500 Internal Server Error
+2026-10-05 15:45:30,276 INFO  [http-nio-8080-exec-16] com.example.bank.controller.AuthController - User logout: userId=U20451
+2026-10-05 23:30:00,001 INFO  [scheduling-1] com.example.bank.scheduler.BatchScheduler - EOD batch job started
+2026-10-05 23:34:12,550 INFO  [scheduling-1] com.example.bank.scheduler.BatchScheduler - EOD batch processed 18452 records, failed=3
+2026-10-05 23:34:12,553 WARN  [scheduling-1] com.example.bank.scheduler.BatchScheduler - EOD batch completed with warnings, see failed_records report
